@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Generate QR</h1>
+
+<form action="/get_qr/" method="POST">
+{% csrf_token %}
+<label>QR Value:</label>
+<br>
+<input type="text" id="qr_value" name="qr_value">
+<br><label>Width:</label>
+<br>
+<input type="number" id="width" name="width">
+<br><label>Height:</label>
+<br>
+<input type="number" id="height" name="height">
+<button type="submit">Generate QR</button>
+</form>
+
+{% if qr_url %}
+<img src={{qr_url}} alt="Could not generate" />
+{% endif %}
+{% endblock %}

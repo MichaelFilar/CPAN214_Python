@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Generate Comic</h1>
+
+<form action="/get_xkcd/" method="POST">
+{% csrf_token %}
+<label>Comic ID:</label>
+<br>
+<input type="number" id="comic_id" name="comic_id">
+</form>
+
+{% if comic_img_url %}
+<img src={{comic_img_url}} alt="Could not generate" />
+{% endif %}
+{% endblock %}

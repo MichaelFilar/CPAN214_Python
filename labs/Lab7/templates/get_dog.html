@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Dog Image</h1>
+
+<form action="/get_dog/" method="POST">
+{% csrf_token %}
+<label>Dog Breed:</label>
+<br>
+<input type="text" id="dog_breed" name="dog_breed">
+</form>
+
+{% if dog_img_array %}
+<div>
+    {% for message in dog_img_array %}
+    <div>
+        <img src={{message}} alt="Could not generate" />
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if dog_img_url %}
+<img src={{dog_img_url}} alt="Could not generate" />
+{% endif %}
+{% endblock %}
